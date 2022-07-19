@@ -1,5 +1,6 @@
 # Adaboost
 Autor: Gabriel Morari Bordoni 
+
 Matrícula: 2022668167
 
 ---
@@ -41,6 +42,7 @@ O MyAdaboostClassifier recebe dois valores na inicialização da classe, o núme
         onde $a$ é a taxa de acertos simples do classificador;
 
     - em seguida, ajustamos os pesos de cada um dos casos de treino ($w_i$) que serão utilizados pelo próximo classificador de acordo com que a acertividade do atual classificador, da seguinte maneira:
+    
         $$
         w_i \leftarrow \frac{w_i}{Z} * e^{(-1)^b \alpha }
         $$
