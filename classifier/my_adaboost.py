@@ -30,7 +30,7 @@ class MyAdaboostClassifier:
         if self.__classifier_model == 'stump':
             return DecisionTreeClassifier(max_depth=1, criterion='entropy')
         elif self.__classifier_model == 'weak-logistic-regression':
-            return LogisticRegression(C=100)
+            return LogisticRegression(C=0.01)
         raise ValueError('Model invalid')
 
     @staticmethod
