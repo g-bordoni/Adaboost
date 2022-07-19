@@ -67,7 +67,7 @@ O MyAdaboostClassifier recebe dois valores na inicialização da classe, o núme
 ---
 ### IV - Observações:
 
-* As analíses da performace do classificador e suas respectivas interpretações estão no notebook ./classifier-analysis.ipynb;
+* As analises da performace do classificador e suas respectivas interpretações estão no notebook ./classifier-analysis.ipynb;
 * Disponível no repositório [Adaboost](https://github.com/g-bordoni/Adaboost)
 
 
