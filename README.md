@@ -1,9 +1,5 @@
 # Adaboost
-Autor: Gabriel Morari Bordoni 
 
-Matrícula: 2022668167
-
----
 
 ## Documentação:
 
