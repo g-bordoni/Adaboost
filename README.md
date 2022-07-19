@@ -9,7 +9,7 @@
 A implementação do Adaboost está localizada em ./classifier/my_adaboost.py e o notebook com os testes de performace estão em ./classifier-analysis.ipynb.
 
 ---
-### II - Executação deste trabalho:
+### II - Execução deste trabalho:
 
 Instalando as dependências por meio do ambiente virtual:
 
