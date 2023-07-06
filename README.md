@@ -27,37 +27,27 @@ O MyAdaboostClassifier recebe dois valores na inicialização da classe, o núme
 
 * ### .fit
 
-    O método fit recebe como argumento uma lista de features númericas e uma lista de labels binárias (-1 ou 1) na qual os classificadores serão treinados. Nesse método, treinamos os n classificadores definidos na inicialização da classe da seguinte maneira: 
+O método fit recebe como argumento uma lista de features númericas e uma lista de labels binárias (-1 ou 1) na qual os classificadores serão treinados. Nesse método, treinamos os n classificadores definidos na inicialização da classe da seguinte maneira: 
     
-    - a cada classificador que treinamos calculamos para ele o o seu respectivo peso de decisão $\alpha$:
+1. a cada classificador que treinamos calculamos para ele o o seu respectivo peso de decisão $\alpha$:
+$$\alpha = \frac{1}{2} ln\Big(\frac{a}{1 - a}\Big)$$
+onde $a$ é a taxa de acertos simples do classificador;
 
-        $$
-        \alpha = \frac{1}{2} ln\Big(\frac{a}{1 - a}\Big)
-        $$
-    
-        onde $a$ é a taxa de acertos simples do classificador;
+2. em seguida, ajustamos os pesos de cada um dos casos de treino ($w_i$) que serão utilizados pelo próximo classificador de acordo com que a acertividade do atual classificador, da seguinte maneira:
+$w_i \leftarrow \frac{w_i}{Z} * e^{(-1)^b \alpha} $
+onde $b$ é um booleano, que é 1 caso o atual classificador tenha acertado determinado caso de teste e 0 caso não, e $Z$ é uma constante normalizadora.
 
-    - em seguida, ajustamos os pesos de cada um dos casos de treino ($w_i$) que serão utilizados pelo próximo classificador de acordo com que a acertividade do atual classificador, da seguinte maneira:
-    
-        $$
-        w_i \leftarrow \frac{w_i}{Z} * e^{(-1)^b \alpha }
-        $$
-
-    onde $b$ é um booleano, que é 1 caso o atual classificador tenha acertado determinado caso de teste e 0 caso não, e $Z$ é uma constante normalizadora.
-
-    O primeiro classificador, diferentemente dos demais, tem um peso padrão para todos os casos de treino que é $1/m$, onde $m$ é o tamanho da lista dos casos de treino. 
+O primeiro classificador, diferentemente dos demais, tem um peso padrão para todos os casos de treino que é $1/m$, onde $m$ é o tamanho da lista dos casos de treino. 
 
 * ### .predict
 
-    Esse método recebe como argumento uma lista de features e retorna para cada uma delas uma label fruto do processo de aprendizagem do MyAdaboost.
+Esse método recebe como argumento uma lista de features e retorna para cada uma delas uma label fruto do processo de aprendizagem do MyAdaboost.
 
-    A label retornada para cada caso de teste é dado pelo sinal da combinação linear das labels oriundas da predição dos n classificadores fracos multiplicadas pelo peso de decisão de cada um deles. Ou seja, a categoria ($l$) retornada pelo predict é dada por:
+A label retornada para cada caso de teste é dado pelo sinal da combinação linear das labels oriundas da predição dos n classificadores fracos multiplicadas pelo peso de decisão de cada um deles. Ou seja, a categoria ($l$) retornada pelo predict é dada por:
 
-    $$
-    l = sign\Big(\sum_{i=1}^n \alpha_i e_i\Big)
-    $$
+$$l = sign\Big(\sum_{i=1}^n \alpha_i e_i\Big)$$
 
-    onde $\alpha_i$ é o peso da decisão do estimador $e_i$.
+onde $\alpha_i$ é o peso da decisão do estimador $e_i$.
 
 
 * ### .score
